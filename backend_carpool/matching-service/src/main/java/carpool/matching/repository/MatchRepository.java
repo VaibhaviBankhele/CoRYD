@@ -1,0 +1,11 @@
+package carpool.matching.repository;
+
+import carpool.matching.entity.Match;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
+
+public interface MatchRepository extends JpaRepository<Match, Long> {
+    Optional<Match> findByRideRequestId(Long requestId);
+    List<Match> findByDriverIdAndStatus(Long driverId, Match.MatchStatus status);
+}
